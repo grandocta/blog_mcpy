@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<script src="{% static "ckeditor/ckeditor.js" %}"></script>
+<div class="ui segment" style="clear:both;">
+	<h5 style="float:right; text-align: right;margin: 0px 0px 0px 0px;"><i class="calendar icon"></i>{{topic.published_date}}</br><i class="write icon"></i>mcpy</h5>
+	<h2 style="display: inline;">{{topic.title}}</h2>
+</div>
+<div class="ui black segment">
+
+	<form method="POST" class="ui form"> {% csrf_token %}
+		{{form.as_p}}
+		<button class="circular ui icon button"><i class="icon settings"></i></button>
+	</form>
+<script>
+  CKEDITOR.replace( 'text' ,{extraAllowedContent: 'pre(*)'});
+</script>
+</div>
+{% endblock %}

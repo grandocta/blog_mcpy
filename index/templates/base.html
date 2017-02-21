@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+{% load staticfiles %}
+{% load menu_items %}
+<title>{% block title %}{% endblock %}</title>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="description" content="{{topic.subtitle}}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.7/semantic.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.7/semantic.min.css" rel="stylesheet"/>
+<link rel="stylesheet" type="text/css" href="{% static "my.css" %}">
+<link rel="stylesheet" type="text/css" href="{% static "syntaxhighlighter/theme.css" %}">
+<script src="{% static "syntaxhighlighter/syntaxhighlighter.js" %}"></script>
+</head>
+<body>
+	<div class="ui sidebar visible inverted vertical menu" style="width: 230px;">
+		<div class="item">
+			<center>
+				<img class="ui image" style="width: 100px; height:auto; " src="{% static "mccpy.jpg" %}">
+				<h5>Electronics? Programming? Cyber-Security? Maybe I have what you are looking for!</h5>
+				<form method="get" action="/search/?q=" class="ui search" >
+					  <div class="ui icon input">
+					    <input class="prompt" type="search" name="q" id="id_q" placeholder="Search...">
+					   	<i class="search icon"></i>
+					  </div>
+				</form>
+			</center>
+		</div>
+		<div class="item"><a href="{% url 'index' %}"><i class="large home icon"></i></a><i class="large linkedin square icon"></i><a href="https://github.com/mccpygit"><i class="large github square icon"></i></a><a href="{% url 'resources' %}"><i class="large book icon"></i></a></div>
+		<a class="item" href="{% url 'archive' %}">Blog Archive <div class="ui green left pointing label">{% topicCount %}</div></a>	
+	</div>
+	<div class="ui blog_post segments">
+		{% block content %}
+		{% endblock %}
+	</div>
+	<div class="ui footer segment" style="margin-top: 50px;">
+		<div class="ui two column grid">
+			<div class="column">
+				<div style="position: absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);">
+					<center><img class="ui image" style="width: 40px; height:auto; margin-right: 5px " src="{% static "mccpy.jpg" %}"></center>
+					mccpy.pythonanywhere.com</br><span style="font-size: 8px;">hosted in www.pythonanywhere.com</span>
+				</div>
+			</div>
+			<div class="right aligned column">
+				<form style="margin-bottom: 10px;" method="get" action="/search/?q=" class="ui search">
+					<div class="ui icon input">
+						<input class="prompt" type="search" name="q" id="id_q" placeholder="Search...">
+						<i class="search icon"></i>
+					</div>
+				</form>
+				<a href="{% url 'index' %}"><i class="large home icon"></i></a>
+				<a href="https://github.com/mccpygit"><i class="large github icon"></i></a>
+				<a href="{% url 'resources' %}"><i class="large book icon"></i></a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

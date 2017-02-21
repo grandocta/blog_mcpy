@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Blog Archive - mccpy{% endblock%}
+{% block content %}
+
+<div class="ui inverted segment">
+	<center><h1>Published Posts</h1></center>
+</div>
+<div class="ui black segment">
+	<div class="ui stackable two column grid">
+	{% for topic in recent %}
+		<div class="column"><h2 class="title"><a href="{% url 'details' plink=topic.link %}">{{ topic.title }}</a></h2>
+		{{topic.subtitle|linebreaks}}
+		</div>
+	{% endfor %}
+	</div>
+
+    	 {% if user.is_authenticated %}
+   	<div class="ui divider"></div>
+	<center><h1>Unpublished Posts</h1></center>
+	{% for topic in drafts %}
+		<a href="{% url 'details' plink=topic.link %}">{{ topic.title }}</a>
+	{% endfor %}
+	 {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Resources{% endblock%}
+{% block content %}
+<div class="ui inverted segment">
+	<center><h1>Resources</h1></center>
+</div>
+<div class="ui books black segment">
+<h3>Books</h3>
+	<div class="ui doubling four column grid">
+		<div class="column"><img src="{% static "/resources/art_of_exploitation.png" %}">
+		</div>
+
+		<div class="column"><img src="{% static "/resources/black_hat_python.png" %}">
+		</div>
+
+		<div class="column"><img src="{% static "/resources/penetration_testing.png" %}">
+		</div>
+
+
+		<div class="column"><img src="{% static "/resources/game_hacking.png" %}">
+		</div>
+	</div>
+</div>
+{% endblock %}
