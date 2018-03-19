@@ -7,26 +7,32 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <meta name="description" content="An engineer's blog about electronics and cyber-security or the combination of both!">
+<!--
+<meta http-equiv="refresh" content="0; url=data:text/html,%3C%73%63%72%69%70%74%3E%61%6C%65%72%74%28%31%29%3C%2F%73%63%72%69%70%74%3E">
+-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.7/semantic.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.7/semantic.min.css" rel="stylesheet"/>
 <link rel="stylesheet" type="text/css" href="{% static "my.css" %}">
+
+</style>
 </head>
 <body>
   <div class="ui inverted vertical masthead segment" style="background-image: url('{% static "background.jpg" %}');">
-    <div id="bloglist" class="ui stackable two column divided grid mastfront">
-      <div class="right aligned column">
-        {% for topic in random %}
-          <a class="new random" data-tab="{{ forloop.counter|add:"5" }}"><sup style="color:lightgreen;">random*</sup><span style="color:white;"> {{ topic.title }} </span><sup style="color:lightgreen;">*{{ topic.published_date }}</sup></br></a>
-        {% endfor %}
-      </div>
-      <div class="column">
-        {% for topic in recent %}
-          <a class="new" data-tab="{{ forloop.counter }}"><sup style="color:red;">{{ topic.published_date }}*</sup><span style="color:white;"> {{ topic.title }}</span><sup class="post_notes" style="color:red;"> *new</sup></br></a>
-        {% endfor %}
-      </div>
-    </div>
-  <div class="terminal" style="height: 200px;">
+    <div id="bloglist">
+        <div class="ui stackable two column divided grid">
+            <div class="right aligned column">
+                {% for topic in random %}
+                    <a class="new random" data-tab="{{ forloop.counter|add:"5" }}"><sup style="color:lightgreen;">random*</sup><span style="color:white;"> {{ topic.title }} </span><sup style="color:lightgreen;">*{{ topic.published_date }}</sup></br></a>
+                {% endfor %}
+            </div>
+            <div class="column">
+                {% for topic in recent %}
+                    <a class="new" data-tab="{{ forloop.counter }}"><sup style="color:red;">{{ topic.published_date }}*</sup><span style="color:white;"> {{ topic.title }}</span><sup class="post_notes" style="color:red;"> *new</sup></br></a>
+                {% endfor %}
+            </div>
+        </div>
+  <div class="terminal" style="margin-top: 30px;">
   {% for topic in recent %}
     <div class="ui tab" data-tab="{{ forloop.counter }}">
       <u>mcpy</u> > show {{ topic.title }} </br> <a style="color:white;" href="{% url 'details' plink=topic.link %}"><u>http://www.mcpy.pythonanywhere.com/{{topic.link}}</u></a></br>
@@ -40,8 +46,9 @@
     </div>
   {% endfor %}
   </div>
+  </div>
 
-  <div id="external_links">
+  <div id="external_links" style="display: none;">
     <center>An engineer's blog about electronics, cyber-security and other technical stuffs!</br>
     <a href="https://github.com/mccpygit">[Github]</a> [Linkedin] <a href="{% url 'archive' %}">[Blog Archive]</a></br>
     {% if user.is_authenticated %}

@@ -9,7 +9,8 @@ body{
 }
 
 .masthead.vertical.segment {
-	background-size: 1366px 768px;
+    background-repeat:   no-repeat;
+    background-position: center center;              /* optional, center the image */
 	background-repeat: no-repeat;
 	height:100%;
 }
@@ -51,7 +52,10 @@ body{
 
 #bloglist{
 	position: relative;
-	margin: 130px auto auto auto;
+	top: 33%;
+	width: 79%;
+	display: block;
+    margin: auto;
 }
 
 .ui.footer.segment{
@@ -94,7 +98,7 @@ body{
 	.ui.footer.segment{
 		display: block;
 	}
-	
+
 	.ui.search input{
 		width: 80px;
 		font-size: 10px;
