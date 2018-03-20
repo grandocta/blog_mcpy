@@ -53,7 +53,7 @@ body{
 #bloglist{
 	position: relative;
 	top: 33%;
-	width: 79%;
+	width: 1000px;
 	display: block;
     margin: auto;
 }
